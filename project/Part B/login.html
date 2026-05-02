@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>התחברות | FLORA Collective</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(13, 59, 32, 0.65), rgba(13, 59, 32, 0.65)),
+        url("/picture/picture aroids.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #173c23;
+    }
+
+    .login-box {
+      width: 360px;
+      background: rgba(238, 246, 233, 0.92);
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .login-box img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .login-box h1 {
+      margin: 10px 0 5px;
+      color: #0d3b20;
+      font-size: 28px;
+    }
+
+    .login-box p {
+      margin-bottom: 25px;
+      color: #355b3f;
+      font-size: 15px;
+    }
+
+    .input-group {
+      text-align: right;
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #174425;
+    }
+
+    .input-group input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      border: 1px solid #b7c9ad;
+      border-radius: 25px;
+      outline: none;
+      font-size: 15px;
+      background: white;
+    }
+
+    .input-group input:focus {
+      border-color: #1f8f45;
+      box-shadow: 0 0 0 3px rgba(31, 143, 69, 0.15);
+    }
+
+    .login-btn {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0d3b20, #2f8f46);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      background: linear-gradient(135deg, #145c2f, #39a955);
+    }
+
+    .links {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #0d3b20;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 18px;
+      color: #174425;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-box {
+        width: 85%;
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <img src="/picture/logo.png" alt="FLORA Collective">
+
+    <h1>התחברות</h1>
+    <p>ברוכים הבאים ל־FLORA Collective</p>
+
+    <form>
+      <div class="input-group">
+        <label>אימייל</label>
+        <input type="email" placeholder="הכנס אימייל">
+      </div>
+
+      <div class="input-group">
+        <label>סיסמה</label>
+        <input type="password" placeholder="הכנס סיסמה">
+      </div>
+
+      <button type="submit" class="login-btn">התחברות</button>
+    </form>
+
+    <div class="links">
+      <a href="forgot.html">שכחת סיסמה?</a>
+      |
+      <a href="register.html">הרשמה</a>
+    </div>
+
+    <a class="back-home" href="catlog.html">← חזרה לקטלוג</a>
+  </div>
+
+</body>
+</html>
