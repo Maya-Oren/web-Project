@@ -3,7 +3,7 @@ const products = {
   1: {
     name: "מצע קוקוס OpenTop קומפקטי – 6 ליטר, מוכן לגידול קוביית קוקוס ועציץ בד",
     price: "₪11",
-    image: "/picture/kokos OpenTop.jpg",
+    image: "./picture/kokos OpenTop.jpg",
     desc: `מצע קוקוס OpenTop קומפקטי בנפח 6 ליטר הוא פתרון גידול חכם המשלב בין מצע קוקוס איכותי לבין עציץ בד ייעודי, ומאפשר שתילה ישירה ללא צורך ברכישת כלי גידול נוסף. השילוב בין מצע מאוורר לעציץ בד נושם יוצר סביבת שורשים מאוזנת, יציבה ויעילה, המתאימה לגידול ביתי ומקצועי כאחד. זהו מוצר מוכן לגידול, החוסך זמן, מקום והתעסקות מיותרת.
 
 המצע מיוצר מסיבי קוקוס טבעיים שעברו תהליך עיבוד וניקוי מוקפד להפחתת מלחים ולשמירה על יציבות כימית. מבנה ה-OpenTop מאפשר אוורור מוגבר באזור השורשים, ניקוז יעיל של עודפי נוזלים ושמירה על אחיזת מים מאוזנת. נפח של 6 ליטר מספק מרחב עבודה נוח להתפתחות שורשית בריאה, תוך שמירה על מבנה יציב לאורך זמן.
@@ -23,7 +23,7 @@ const products = {
   2: {
     name: "מנורת גידול שולחנית Illoo Lamp BlackWhite – פתרון LED קומפקטי לגידול צמחים",
     price: "₪199",
-    image: "/picture/led light.jpg",
+    image: "./picture/led light.jpg",
     desc: `מנורת גידול שולחנית Illoo Lamp BlackWhite היא פתרון עמיד, חכם וקל לתפעול לכל מי שרוצה לשלב תאורה איכותית בתהליך גידול צמחים בחללים קטנים, במשרד, במטבח, בארונות גידול או ליד אדניות על אדן החלון. מנורה זו פותחה במיוחד עם תאורת LED מבוססת ספקטרום מתאים לגידול צמחים בהיקפים קטנים עד בינוניים, תוך התאמה מלאה לצרכים של צמיחה, פוטוסינתזה ויצירת מערכת אורח חיים חיונית לצמח.
 
 היתרון של מנורת גידול שולחנית הוא בדיוק בשילוב בין גודל נוח לבין תוצאות מרשימות. במקום להשתמש בגוף תאורה גדול המותקן בגובה רב או בחיבור מורכב, Illoo Lamp מאפשרת להציב תאורה קרובה ומדויקת למצע הגידול ולשלוט עליו בהתאם לצורכי התהליך. זהו פתרון אידאלי למגדלים ביתיים המתחילים את דרכם בעולמות הצמחים, למי שיש לו מספר עציצים, או למי שרוצה לשלב גידול בתוך חללים קטנים ללא צורך בציוד כבד או בהתקנה מורכבת.
@@ -39,7 +39,7 @@ const products = {
   3: {
     name: " ערכת קומפקט – לד 240 וואט, אוהל 65x40x150 ו2 עציצי בד 8 ליטר במחיר פיצוץ",
     price: "₪799",
-    image: "/picture/ohel gidol.jpg",
+    image: "./picture/ohel gidol.jpg",
     desc: `ערכת לד קומפקטית לגידול 65x40x150
 ערכת לד קומפקטית לגידול 40×150 היא פתרון תאורה יעיל וחסכוני למגדלים המחפשים מערכת לד מוכנה, קומפקטית וקלה לשילוב בחדרי גידול קטנים ובינוניים. תאורה היא אחד הגורמים המשפיעים ביותר על איכות וקצב הצמיחה, וערכת לד קומפקטית מספקת כיסוי אור אחיד המתאים לשטחי גידול צרים וארוכים, תוך ניצול נכון של החלל הקיים.
 
@@ -80,7 +80,7 @@ UPLUX LED 240W
   4: {
     name: "לוח קוואנטום UPLUX 240W Q Board – מחיר ל 2 יחידות תאורה",
     price: "₪890",
-    image: "/picture/qwnteem 240WQ.jpg",
+    image: "./picture/qwnteem 240WQ.jpg",
     desc: `לרגל המצב, אנחנו שמחים להציע לך הנחה משמעותית על מערכת הגידול הביתית שלך! ✨
 מחיר חדש, נוח ויפה בקניה ל 2 יחידות  : דיפ ספיידר 240 וואט כל אחת – תאורת מהמתקדמות בשוק מבית UPLUX. עוד הצעה החמה לגידול ביתי!
 קוואנטום בורד היא מערכת תאורת לד מתקדמת בעלת ספקטרום הרחב ביותר (ספקטרום מלא).
@@ -96,7 +96,7 @@ UPLUX LED 240W
   },
   5: {
   name: "AN Sensi Grow Coco A+B",
-  image: "/picture/sensi grow coco a+b.jpg",
+  image: "./picture/sensi grow coco a+b.jpg",
   desc: `שימוש בsensi grow יתגמל אותך עם צמיחה מהירה, עבה יותר ומבנה יציב יותר. זו נוסחת חומרים מזינים על בסיס שני חלקים שעובדת היטב לתוצאות טובות ובריאות יותר.
 *מתאים למגדלים על מצע קוקו פרלייט`,
   category: "featured",
@@ -119,7 +119,7 @@ UPLUX LED 240W
   6: {
     name: "מגש הנבטה למיקרו גריינס",
     price: "₪15",
-    image: "/picture/magas anbata.jpg",
+    image: "./picture/magas anbata.jpg",
     desc: `מגש הנבטה למיקרו גריינס
 מגש הנבטה למיקרו גריינס כפול
 מגש הנבטה למיקרו גריינס כפול הוא פתרון ייעודי, יעיל ונוח לגידול מיקרו־גריינס בתנאים מבוקרים ונקיים. מיקרו גריינס נחשבים לגידול מהיר ורגיש, ולכן בחירת מגש מתאים משפיעה ישירות על אחידות הנביטה, איכות היבול ונוחות העבודה. המבנה הכפול של המגש מאפשר שליטה טובה יותר בלחות, בניקוז ובאיסוף מים עודפים, דבר המהווה יתרון משמעותי בגידול אינטנסיבי.
@@ -161,7 +161,7 @@ UPLUX LED 240W
   7: {
     name: "Voodoo Juice Plus – טבליות מאיץ שורשים ביולוגי לצמיחה מקסימלית – 10 יחידות",
     price: "₪400",
-    image: "/picture/v-juice_new900px-1.jpg",
+    image: "./picture/v-juice_new900px-1.jpg",
     desc: `Voodoo Juice Plus הן טבליות הכוללות אחד מתוספי המיקרואורגניזמים המתקדמים והאמינים ביותר בעולם הגידול המקצועי. מדובר בתוסף ביולוגי נוזלי, המבוסס על שילוב מדויק של חיידקים מועילים, אשר פועלים ישירות באזור בית השורשים ומעצימים את תפקודו הטבעי של הצמח.
 
 מערכת שורשים חזקה ובריאה היא הבסיס לצמח יציב, לצמיחה מהירה וליבול איכותי. Voodoo Juice Plus פועל לחיזוק התפתחות השורשים הראשוניים והמשניים, מגדיל את שטח המגע עם מצע הגידול ומשפר באופן משמעותי את יכולת הספיגה של מים ודשנים. התוצאה היא צמח חזק יותר, עמיד יותר לסטרס סביבתי, ובעל קצב גדילה אחיד ובריא.
@@ -179,7 +179,7 @@ UPLUX LED 240W
   8: {
     name: "LED Under Canopy 120W – תאורת גידול מתחת לחופת הצמחים",
     price: "₪899",
-    image: "/picture/LED Under Canopy.jpg",
+    image: "./picture/LED Under Canopy.jpg",
     desc: `LED Under Canopy הוא פתרון תאורה ייעודי לגידול צמחים מקצועי, המיועד להארת האזור שמתחת לחופת הצמח (Under Canopy) – אזור שבדרך כלל סובל ממחסור באור ישיר. תאורה זו מאפשרת פיזור אור אחיד יותר, שיפור פוטוסינתזה בחלקים התחתונים של הצמח, והפחתת תופעות של ענפים חלשים או פריחה לא אחידה.
 
 בשימוש במערכות גידול מתקדמות, תאורת LED Under Canopy בהספק 120W משלימה את התאורה העליונה ומנצלת טוב יותר את נפח חלל הגידול. האור מגיע בדיוק למקומות שבהם הוא נדרש, מבלי לבזבז אנרגיה או לגרום לעומס חום מיותר. התוצאה היא צמחים מאוזנים יותר, פיתוח אחיד של פרחים ויבול איכותי לאורך כל הצמח.
@@ -263,7 +263,7 @@ LED Under Canopy 120W הוא הפתרון המדויק להשלמת התאורה
   9: {
     name: "מבצע מונסטרה אדנסוני מגוונת ע׳ 6",
     price: "₪150",
-    image: "/picture/monstera andnosi.jpg",
+    image: "./picture/monstera andnosi.jpg",
     desc: `
 מונסטרה אדנסוני אוראה היא צמח טרופי מטפס עם עלים מחוררים וגיוון צהוב מרהיב, מתאים לגידול ביתי.
 
@@ -278,7 +278,7 @@ LED Under Canopy 120W הוא הפתרון המדויק להשלמת התאורה
   10: {
     name: "מבצע מונסטרה תאי קונסטליישן קרם ברולה ע' 7",
     price: "₪100",
-    image: "/picture/monstera tai.jpg",
+    image: "./picture/monstera tai.jpg",
     desc: `
 מונסטרה תאי קונסטליישן קרם ברולה היא צמח נדיר עם גיוון קרמי ייחודי, מתאים למיקום מואר בבית  .
 
@@ -293,7 +293,7 @@ LED Under Canopy 120W הוא הפתרון המדויק להשלמת התאורה
   11: {
     name: "אלוקסיה דרגון סקייל ע' 15",
     price: "₪70",
-    image: "/picture/Alo dragon skill 15.jpg",
+    image: "./picture/Alo dragon skill 15.jpg",
     desc: `
 אלוקסיה דרגון סקייל היא צמח טרופי מרהיב עם עלים במרקם ייחודי המזכיר קשקשי דרקון בגווני ירוק עמוק וכסוף.
 
@@ -308,7 +308,7 @@ LED Under Canopy 120W הוא הפתרון המדויק להשלמת התאורה
   12: {
     name: "מבצע אלוקסיה בלאק וולווט ורודה ע' 6",
     price: "₪500",
-    image: "/picture/alo black volvet pot 6-499.jpg",
+    image: "./picture/alo black volvet pot 6-499.jpg",
 desc: `
 אלוקסיה בלאר וולוט גיוון ורוד היא צמח נדיר ומיוחד עם עלים קטיפתיים בגוון כהה וגיוון ורדרד עדין, שמוסיף מראה יוקרתי לכל חלל.
 
@@ -323,7 +323,7 @@ desc: `
  13: {
     name: "אלוקסיה דרגון סקייל מינט ע'11",
     price: "₪130",
-    image: "/picture/alo dragon skill pot 11-149.jpg",
+    image: "./picture/alo dragon skill pot 11-149.jpg",
 desc: `
 אלוקסיה דרגון סקייל מינט היא צמח ייחודי עם עלים במרקם קשקשי וגוון מינט עדין, שמעניק מראה מיוחד ולא שגרתי.
 
@@ -338,7 +338,7 @@ desc: `
   14: {
     name: "אלוקסיה פריידק וריגטה ע'6",
     price: "₪120",
-    image: "/picture/alo fradik mini pot 6-139.jpg",
+    image: "./picture/alo fradik mini pot 6-139.jpg",
     desc: `
 אלוקסיה פריידק וריגטה היא צמח נדיר ומרשים עם עלים קטיפתיים בגוון ירוק כהה וגיוון לבן ייחודי, שמעניק מראה יוקרתי ואלגנטי.
 
@@ -353,7 +353,7 @@ desc: `
     15: {
     name: "אלוקסיה קופרה ע'6",
     price: "₪39",
-    image: "/picture/alo kopra pot 6-39.jpg",
+    image: "./picture/alo kopra pot 6-39.jpg",
     desc: `
 אלוקסיה קופרה היא צמח ייחודי עם עלים עבים ומבריקים בגוון מתכתי אדמדם־נחושתי, שמעניק מראה יוצא דופן ומושך תשומת לב.
 
@@ -368,7 +368,7 @@ desc: `
     16: {
     name: "אלוקסיה סקאלפורם ע'14",
     price: "₪129",
-    image: "/picture/alo skalfrom pot 14-129.jpg",
+    image: "./picture/alo skalfrom pot 14-129.jpg",
     desc: `
 אלוקסיה סקאבריפורם היא צמח מיוחד עם עלים מוארכים במרקם מחוספס וגוון ירוק עמוק, שמעניק מראה פראי וטרופי.
 
@@ -383,7 +383,7 @@ desc: `
     17: {
     name: "אלוקסיה ונום ע'9",
     price: "₪300",
-    image: "/picture/alo venom pot 9-349.jpg",
+    image: "./picture/alo venom pot 9-349.jpg",
   desc: `
 אלוקסיה ונום היא צמח מיוחד עם עלים כהים וורידים בהירים בולטים, שיוצרים מראה דרמטי ויוקרתי.
 
@@ -398,7 +398,7 @@ desc: `
    18: {
     name: "אלוקסיה במבינו ע'12",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: `
 אלוקסיה במבינו היא זן קומפקטי ממשפחת הארואידים (Araceae), המאופיין בעלים צרים ומוארכים עם עורקים בולטים. מקורו באזורים טרופיים, ולכן דורש תנאים המדמים סביבה לחה ויציבה.
 
@@ -415,84 +415,84 @@ desc: `
    19: {
     name: "",
     price: "₪139",
-    image: "/picture/GHE root grow.jpg",
+    image: "./picture/GHE root grow.jpg",
     desc: ``,
     category: "regular"
     },
     20: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     21: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     22: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     23: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     24: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     25: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     26: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     27: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     28: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     29: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     },
     30: {
     name: "",
     price: "₪139",
-    image: "/picture/alo bambino pot12 -139.jpg",
+    image: "./picture/alo bambino pot12 -139.jpg",
     desc: ``,
     category: "regular"
     }
