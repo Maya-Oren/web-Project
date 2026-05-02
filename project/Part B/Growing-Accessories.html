@@ -172,7 +172,7 @@
       height: 280px;
       background:
         linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-        url("/picture/picture aroids.png");
+        url("./picture/picture aroids.jpg");
       background-size: cover;
       background-position: center;
       display: flex;
@@ -409,7 +409,7 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <img src="/picture/logo.png" alt="Flora Collective">
+        <img src="./picture/logo.jpg" alt="Flora Collective">
         <span>FLORA Collective</span>
       </div>
 
@@ -526,7 +526,7 @@ const growingAccessories = document.getElementById("growingAccessories");
 for (let id in products) {
   const product = products[id];
 
-  if (product.type === "growing-accessory") {
+  if (product.type === "growing-accessories") {
 
     const displayPrice =
       product.options && product.options.length > 0
