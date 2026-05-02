@@ -502,7 +502,7 @@ desc: `
       size: "5 L",
       price: "₪210"
     } 
-  ],
+      ]},
     23: {
     name: "פחם פעיל לטרריום 1.5 ק",
     price: "₪139",
@@ -576,7 +576,7 @@ FloraGro 0.5L ,FloraBloom 0.5L ,FloraMicro 0.5L,
     name: "כף שתילה",
     price: "₪29",
     image: "./picture/caf.jpg",
-    category: "regular"
+    category: "sale"
     },
     27: {
     name: "מכשיר קולט/סופח לחות",
@@ -721,13 +721,13 @@ Bellefiori הוא מצע גידול איכותי לסחלבים המכיל שב�
     category: "regular"
     },
     35: {
-    name: "פרךייט 100 ליטר ",
+    name: "פרלייט 100 ליטר ",
     price: "₪120",
     image: "./picture/prlit.jpg",
     desc: `עצבו את הגינה שלכם עם טוף מעורב של מרום גולן. הטוף הוא סלע געשי המשמש לחיפוי שטחי הגינה ולניקוז מים בעציצים.
 טוף מעורב מכיל גווני צבע הנעים בין אדום לשחור. `,
-    category: "regular"
+    category: "sale"
     }
 
 
-}} 
+}
