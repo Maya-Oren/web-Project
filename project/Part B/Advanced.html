@@ -421,8 +421,8 @@
     <div class="category">
       <a href="nutrients.html">דשנים</a>
       <div class="dropdown">
-        <a href="nutrients/Advanced.html">דשן Advanced Nutrients</a>
-        <a href="nutrients/GHE.html">דשן GHE</a>
+        <a href="Advanced.html">דשן Advanced Nutrients</a>
+        <a href="GHE.html">דשן GHE</a>
       </div>
     </div>
 
@@ -451,7 +451,7 @@
   
 
 <section>
-  <h2>צמחים מיוחדים</h2>
+  <h2>דשן Advanced Nutrients</h2>
 
   <div class="featured-wrapper">
     <div class="featured" id="pottingProducts"></div>
@@ -494,7 +494,7 @@ const pottingProducts = document.getElementById("pottingProducts");
 for (let id in products) {
   const product = products[id];
 
-  if (product.type === "nutrients") {
+  if (product.type === "Advanced Nutrients") {
     const displayPrice =
       product.options && product.options.length > 0
         ? "החל מ־" + product.options[0].price

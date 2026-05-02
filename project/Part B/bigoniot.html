@@ -494,7 +494,7 @@ const pottingProducts = document.getElementById("pottingProducts");
 for (let id in products) {
   const product = products[id];
 
-  if (product.type === "nutrients") {
+  if (product.kind === "bigoniot") {
     const displayPrice =
       product.options && product.options.length > 0
         ? "החל מ־" + product.options[0].price
