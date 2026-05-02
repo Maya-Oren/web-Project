@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>עגלת קניות | FLORA Collective</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #dce8d2;
+  color: #173c23;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #0d3b20;
+}
+
+.cart-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.cart-item img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  background: #eef6e9;
+  border-radius: 10px;
+}
+
+.details {
+  flex: 1;
+}
+
+.price {
+  font-weight: bold;
+  color: #1f5c35;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.qty-controls button {
+  width: 30px;
+  padding: 5px;
+}
+
+button {
+  background: #174425;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1f5c35;
+}
+
+.remove {
+  background: crimson;
+}
+
+.remove:hover {
+  background: darkred;
+}
+
+.total {
+  text-align: center;
+  font-size: 24px;
+  margin: 25px 0;
+  font-weight: bold;
+  color: #0d3b20;
+}
+
+.empty {
+  text-align: center;
+  margin: 40px;
+  font-size: 18px;
+}
+
+.form-box {
+  margin-top: 35px;
+  background: #eef6e9;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: 1 / 3;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border: 1px solid #b7c9ad;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.payment-box {
+  margin-top: 25px;
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #c8ddb8;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.checkout-btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.success {
+  display: none;
+  margin-top: 18px;
+  background: #dff5df;
+  color: #0d3b20;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full {
+    grid-column: auto;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>עגלת קניות 🛒</h1>
+
+<div id="cartContainer"></div>
+<div class="total" id="totalPrice"></div>
+
+<div class="actions">
+  <button onclick="clearCart()" class="remove">נקה עגלה</button>
+  <a href="catlog.html"><button>המשך קנייה</button></a>
+</div>
+
+<div class="form-box">
+  <h2>פרטים למשלוח ותשלום</h2>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>שם מלא *</label>
+      <input type="text" id="fullName" required>
+    </div>
+
+    <div class="form-group">
+      <label>טלפון *</label>
+      <input type="tel" id="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label>אימייל *</label>
+      <input type="email" id="email" required>
+    </div>
+
+    <div class="form-group">
+      <label>עיר *</label>
+      <input type="text" id="city" required>
+    </div>
+
+    <div class="form-group">
+      <label>רחוב ומספר בית *</label>
+      <input type="text" id="address" required>
+    </div>
+
+    <div class="form-group">
+      <label>מיקוד</label>
+      <input type="text" id="zip">
+    </div>
+
+    <div class="form-group">
+      <label>שיטת משלוח *</label>
+      <select id="shipping" required>
+        <option value="">בחרי משלוח</option>
+        <option value="איסוף עצמי">איסוף עצמי</option>
+        <option value="שליח עד הבית">שליח עד הבית</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>אמצעי תשלום *</label>
+      <select id="payment" required>
+        <option value="">בחרי תשלום</option>
+        <option value="אשראי">אשראי</option>
+        <option value="ביט">ביט</option>
+        <option value="PayPal">PayPal</option>
+        <option value="מזומן באיסוף">מזומן באיסוף</option>
+      </select>
+    </div>
+
+    <div class="form-group full">
+      <label>הערות להזמנה</label>
+      <textarea id="notes" placeholder="קומה, דירה, הערות לשליח וכו׳"></textarea>
+    </div>
+  </div>
+
+  <div class="payment-box">
+    <strong>חשוב:</strong>
+    התשלום האמיתי דורש חיבור לספק סליקה כמו PayPal, Stripe, משולם, ישראכרט או Tranzila.
+    הכפתור כאן ייפתח רק אחרי שכל הפרטים מולאו.
+  </div>
+
+  <button class="checkout-btn" id="checkoutBtn" disabled onclick="checkout()">
+    אישור פרטים ומעבר לתשלום
+  </button>
+
+  <div class="success" id="successMsg">
+    הפרטים נשמרו בהצלחה ✅ עכשיו אפשר לחבר כאן קישור תשלום אמיתי.
+  </div>
+</div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const container = document.getElementById("cartContainer");
+const totalBox = document.getElementById("totalPrice");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+function getNumber(price) {
+  return Number(String(price).replace("₪", "").replace(",", "").trim());
+}
+
+let shippingCost = 0;
+const shippingMethod = document.getElementById("shipping").value;
+
+if (shippingMethod === "שליח עד הבית") {
+  shippingCost = 30;
+}
+
+const finalTotal = total + shippingCost;
+
+totalBox.innerHTML = `
+סה״כ מוצרים: ₪${total}<br>
+משלוח: ₪${shippingCost}<br>
+-------------------<br>
+סה״כ לתשלום: ₪${finalTotal}
+`;
+
+  cart.forEach((item, index) => {
+    const unitPrice = getNumber(item.unitPrice);
+    const itemTotal = unitPrice * Number(item.quantity);
+    item.total = "₪" + itemTotal;
+    total += itemTotal;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}">
+        <div class="details">
+          <h3>${item.name}</h3>
+          <div>${item.option || ""}</div>
+          <div class="price">מחיר יחידה: ${item.unitPrice}</div>
+
+          <div class="qty-controls">
+            <button onclick="changeQty(${index}, -1)">-</button>
+            <span>כמות: ${item.quantity}</span>
+            <button onclick="changeQty(${index}, 1)">+</button>
+          </div>
+
+          <div class="price">סה״כ מוצר: ${item.total}</div>
+        </div>
+
+        <button class="remove" onclick="removeItem(${index})">הסר</button>
+      </div>
+    `;
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  totalBox.innerText = "סה״כ לתשלום: ₪" + total;
+  validateForm();
+}
+
+function changeQty(index, change) {
+  cart[index].quantity = Number(cart[index].quantity) + change;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function clearCart() {
+  localStorage.removeItem("cart");
+  cart = [];
+  renderCart();
+}
+
+function validateForm() {
+  const requiredFields = [
+    "fullName",
+    "phone",
+    "email",
+    "city",
+    "address",
+    "shipping",
+    "payment"
+  ];
+
+  const allFilled = requiredFields.every(id => {
+    return document.getElementById(id).value.trim() !== "";
+  });
+
+  checkoutBtn.disabled = !(allFilled && cart.length > 0);
+}
+
+document.querySelectorAll("input, select, textarea").forEach(field => {
+  field.addEventListener("input", validateForm);
+  field.addEventListener("change", validateForm);
+});
+
+function checkout() {
+  validateForm();
+
+  if (checkoutBtn.disabled) {
+    alert("נא למלא את כל שדות החובה");
+    return;
+  }
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let total = 0;
+
+  cart.forEach(item => {
+    total += Number(item.total.replace("₪", ""));
+  });
+
+  let shippingCost = 0;
+  const shippingMethod = document.getElementById("shipping").value;
+
+  if (shippingMethod === "שליח עד הבית") {
+    shippingCost = 30;
+  }
+
+  const finalTotal = total + shippingCost;
+
+  const order = {
+    customer: {
+      fullName: document.getElementById("fullName").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      city: document.getElementById("city").value,
+      address: document.getElementById("address").value,
+      shipping: shippingMethod,
+      payment: document.getElementById("payment").value
+    },
+    cart: cart,
+    totals: {
+      products: total,
+      shipping: shippingCost,
+      final: finalTotal
+    }
+  };
+
+  localStorage.setItem("lastOrder", JSON.stringify(order));
+
+  // מעבר לעמוד הצלחה
+  window.location.href = "success.html";
+}
+
+  const order = {
+    customer: {
+      fullName: document.getElementById("fullName").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      city: document.getElementById("city").value,
+      address: document.getElementById("address").value,
+      zip: document.getElementById("zip").value,
+      shipping: document.getElementById("shipping").value,
+      payment: document.getElementById("payment").value,
+      notes: document.getElementById("notes").value
+    },
+    cart: cart,
+    createdAt: new Date().toLocaleString("he-IL")
+  };
+
+  localStorage.setItem("lastOrder", JSON.stringify(order));
+
+  document.getElementById("successMsg").style.display = "block";
+
+  /*
+    כאן בעתיד מחברים תשלום אמיתי.
+    לדוגמה:
+    window.location.href = "https://payment-provider-link.com";
+  */
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
