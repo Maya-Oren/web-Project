@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLORA Collective</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dce8d2;
+      color: #173c23;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 30px auto;
+      background: #eef6e9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d3b20, #1f5c35);
+      color: white;
+      padding: 20px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .login a {
+      font-size: 26px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .cart-icon-box {
+      position: relative;
+      padding-bottom: 15px;
+
+    }
+
+    .cart-link {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      position: relative;
+      display: inline-block;
+    }
+
+    #cartCount {
+      position: absolute;
+      top: -8px;
+      left: -10px;
+      background: #ff4d4d;
+      color: white;
+      font-size: 12px;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .cart-preview {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      width: 280px;
+      background: white;
+      color: #173c23;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      padding: 15px;
+      z-index: 999;
+    }
+
+    .cart-icon-box:hover .cart-preview,
+    .cart-preview:hover {
+    display: block;
+}
+
+    .cart-preview h4 {
+      margin: 0 0 10px;
+      color: #0d3b20;
+      text-align: center;
+    }
+
+    .cart-preview-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+      font-size: 13px;
+    }
+
+    .cart-preview-item img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #eef6e9;
+    }
+
+    .cart-preview-btn {
+      display: block;
+      margin-top: 12px;
+      background: #174425;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 9px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .empty-cart-preview {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 300px;
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .hero {
+      height: 280px;
+      background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        url("./picture/picture aroids.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      width: 420px;
+      background-color: rgba(0, 0, 0, 0.55);
+      border-radius: 30px;
+      padding: 6px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-box input::placeholder {
+      color: white;
+    }
+
+    .search-box button {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      padding: 0 15px;
+    }
+
+    .catalog-menu {
+      background-color: #c8ddb8;
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      padding: 15px;
+    }
+
+    .category {
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .category > a {
+      color: #0d3b20;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      min-width: 160px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .dropdown a {
+      display: block;
+      color: #0d3b20;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .dropdown a:hover {
+      background-color: #eef6e9;
+    }
+
+    .category:hover .dropdown {
+      display: block;
+    }
+
+    section {
+      padding: 35px;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #174425;
+    }
+
+    .featured {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      overflow: visible;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      width: 220px;
+      min-width: 220px;
+      flex-shrink: 0;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #eef6e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .image-box img:hover {
+      transform: scale(1.06);
+      opacity: 0.9;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin: 12px 0 5px;
+      min-height: 45px;
+    }
+
+    .price {
+      color: #1f5c35;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 8px 0 12px;
+    }
+
+    .card button {
+      background: #174425;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background: #1f5c35;
+    }
+
+    .info {
+      background: #c8ddb8;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      padding: 25px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #0d3b20;
+      color: white;
+      padding: 35px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    footer h3 {
+      margin-top: 0;
+    }
+
+    footer p, footer a {
+      color: #dce8d2;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="./picture/logo.jpg" alt="Flora Collective">
+        <span>FLORA Collective</span>
+      </div>
+
+      <div class="header-icons">
+
+        <div class="cart-icon-box">
+          <a href="cart.html" class="cart-link">
+            🛒
+            <span id="cartCount">0</span>
+          </a>
+
+          <div class="cart-preview">
+            <h4>עגלת קניות</h4>
+            <div id="cartPreviewItems"></div>
+            <a href="cart.html" class="cart-preview-btn">מעבר לעגלה</a>
+          </div>
+        </div>
+
+        <div class="login">
+          <a href="login.html">👤</a>
+        </div>
+
+      </div>
+    </div>
+
+    <nav>
+      <a href="home-page.html">בית</a>
+      <a href="catlog.html">קטלוג</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="search-box">
+      <input type="text" placeholder="חיפוש בקטלוג...">
+      <button>🔍</button>
+    </div>
+  </div>
+
+  <div class="catalog-menu">
+    <div class="category">
+      <a href="nutrients.html">דשנים</a>
+      <div class="dropdown">
+        <a href="nutrients/Advanced.html">דשן Advanced Nutrients</a>
+        <a href="nutrients/GHE.html">דשן GHE</a>
+      </div>
+    </div>
+
+    <div class="category">
+      <a href="plant.html">צמחים</a>
+      <div class="dropdown">
+        <a href="aloxies.html">אלוקסיות</a>
+        <a href="bigoniot.html">ביגוניות</a>
+        <a href="monsters.html">מונסטרות</a>
+        <a href="philodendron.html">פילודנדרון</a>
+      </div>
+    </div>
+
+    <div class="category">
+      <a href="Growing-Accessories.html">ציוד נלווה</a>
+    </div>
+
+    <div class="category">
+      <a href="led.html">תאורת גידול</a>
+    </div>
+
+    <div class="category">
+      <a href="Potting-Mix.html">מצעי אדמה</a>
+    </div>
+    </div>
+  
+
+<section>
+  <h2>צמחים מיוחדים</h2>
+
+  <div class="featured-wrapper">
+    <div class="featured" id="pottingProducts"></div>
+  </div>
+</section>
+
+  <div class="info">
+    <div>🚚 משלוחים מהירים</div>
+    <div>🛡️ ליווי אישי בגידול</div>
+    <div>🌱 צמחים נדירים בלבד</div>
+  </div>
+
+  <footer>
+    <div>
+      <h3>FLORA Collective</h3>
+      <p>צמחי בית נדירים, ארואידים, מונסטרות וציוד גידול איכותי.</p>
+    </div>
+
+    <div>
+      <h3>ניווט</h3>
+      <p><a href="catlog.html">קטלוג</a></p>
+      <p><a href="cart.html">עגלת קניות</a></p>
+      <p><a href="#">צור קשר</a></p>
+    </div>
+
+    <div>
+      <h3>יצירת קשר</h3>
+      <p>טלפון: 053-2254042</p>
+      <p>אינסטגרם: flora_collective</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="products.js"></script>
+
+<script>
+const pottingProducts = document.getElementById("pottingProducts");
+
+for (let id in products) {
+  const product = products[id];
+
+  if (product.kind === "Monstera") {
+    const displayPrice =
+      product.options && product.options.length > 0
+        ? "החל מ־" + product.options[0].price
+        : product.price;
+
+    pottingProducts.innerHTML += `
+      <div class="card">
+        <a href="product.html?id=${id}">
+          <div class="image-box">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+        </a>
+
+        <h3>${product.name}</h3>
+        <p class="price">${displayPrice || ""}</p>
+        <button onclick="location.href='product.html?id=${id}'">צפייה במוצר</button>
+      </div>
+    `;
+  }
+}
+</script>
+
+</body>
+</html>
