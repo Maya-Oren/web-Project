@@ -1,84 +1,27 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>הרשמה</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(13,59,32,0.65), rgba(13,59,32,0.65)),
-    url("/picture/picture aroids.png");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.box {
-  width: 380px;
-  background: rgba(238,246,233,0.95);
-  padding: 35px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-h1 {
-  margin-bottom: 15px;
-  color: #0d3b20;
-}
-
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
-  border: 1px solid #b7c9ad;
-  margin-bottom: 12px;
-}
-
-button {
-  width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg,#0d3b20,#2f8f46);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: linear-gradient(135deg,#145c2f,#39a955);
-}
-
-a {
-  display: block;
-  margin-top: 15px;
-  color: #0d3b20;
-  text-decoration: none;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הרשמה | FLORA Collective</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-<div class="box">
-  <h1>הרשמה</h1>
-
-  <input type="text" placeholder="שם מלא">
-  <input type="email" placeholder="אימייל">
-  <input type="password" placeholder="סיסמה">
-  <input type="password" placeholder="אימות סיסמה">
-
-  <button>צור חשבון</button>
-
-  <a href="login.html">כבר יש לך חשבון? התחבר</a>
+<div class="auth-page">
+  <div class="auth-box">
+    <img src="picture/logo.jpg" alt="FLORA Collective">
+    <h1>הרשמה</h1>
+    <form id="registerForm" novalidate>
+      <div class="form-row"><label for="regName">שם מלא</label><input type="text" id="regName"><span class="error" data-error-for="regName"></span></div>
+      <div class="form-row"><label for="regEmail">אימייל</label><input type="email" id="regEmail"><span class="error" data-error-for="regEmail"></span></div>
+      <div class="form-row"><label for="regPassword">סיסמה</label><input type="password" id="regPassword"><span class="error" data-error-for="regPassword"></span></div>
+      <div class="form-row"><label for="regConfirm">אימות סיסמה</label><input type="password" id="regConfirm"><span class="error" data-error-for="regConfirm"></span></div>
+      <button type="submit" class="btn full-btn">צור חשבון</button>
+      <div class="success-message" id="registerSuccess"></div>
+    </form>
+    <a href="login.html">כבר יש לך חשבון? התחבר</a>
+  </div>
 </div>
-
+<script src="js/validations.js"></script>
 </body>
 </html>

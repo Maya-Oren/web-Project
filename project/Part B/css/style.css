@@ -1,0 +1,802 @@
+/* CSS עיצוב לאתר */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #DDE7D2;
+  color: #1F3A2E;
+}
+
+.page {
+  max-width: 1180px;
+  margin: 15px auto;
+  background-color: #F6F1E9;
+}
+
+a {
+  color: inherit;
+}
+
+section {
+  padding: 30px 25px;
+}
+
+h1,
+h2,
+h3 {
+  color: #0B3D2E;
+}
+
+h2,
+.center-title {
+  text-align: center;
+}
+
+.section-text {
+  max-width: 760px;
+  margin: 0 auto 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hidden {
+  display: none;
+}
+
+/* כפתורים */
+.btn,
+button,
+.small-link,
+.cart-preview-btn {
+  display: inline-block;
+  background-color: #0B3D2E;
+  color: white;
+  border: 0;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn:hover,
+button:hover,
+.small-link:hover,
+.cart-preview-btn:hover {
+  background-color: #256D4F;
+}
+
+.secondary-btn,
+.tab-btn {
+  background-color: #DDE7D2;
+  color: #0B3D2E;
+  border: 1px solid #0B3D2E;
+}
+
+.danger-btn {
+  background-color: #B45C42;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Header */
+header {
+  background-color: #0B3D2E;
+  color: white;
+  padding: 18px 22px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.logo img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.account-link,
+.cart-link,
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cart-icon-box {
+  position: relative;
+}
+
+.cart-link {
+  font-size: 24px;
+}
+
+#cartCount {
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  background-color: #B45C42;
+  color: white;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  font-size: 12px;
+  text-align: center;
+}
+
+.cart-preview {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 35px;
+  width: 250px;
+  background-color: white;
+  color: #1F3A2E;
+  border: 1px solid #C8D8B8;
+  padding: 12px;
+  z-index: 10;
+}
+
+.cart-icon-box:hover .cart-preview {
+  display: block;
+}
+
+.cart-preview h4,
+.empty-cart-preview {
+  text-align: center;
+}
+
+.cart-preview-item {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.cart-preview-item img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* דף בית */
+.home-hero {
+  min-height: 500px;
+  background-image: url("../picture/picture aroids.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.hero-content {
+  width: 760px;
+  max-width: 90%;
+  background-color: rgba(11, 61, 46, 0.82);
+  color: white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 45px 30px;
+  border-radius: 28px;
+}
+
+.hero-content h1 {
+  color: white;
+  font-size: 46px;
+  margin-top: 0;
+}
+
+.hero-content p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.hero-btn {
+  background-color: #DDE7D2;
+  color: #0B3D2E;
+}
+
+/* אנימציה */
+@keyframes leafMove {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating-leaf {
+  position: absolute;
+  font-size: 38px;
+  animation: leafMove 3s infinite;
+}
+
+.leaf1 {
+  top: 80px;
+  right: 8%;
+}
+
+.leaf2 {
+  bottom: 80px;
+  left: 8%;
+}
+
+.leaf3 {
+  top: 250px;
+  right: 14%;
+}
+
+/* אזורי התוכן - Grid דינמי */
+.cards,
+.steps,
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 300px));
+  justify-content: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* אזור אישי - שתי קופסאות באמצע */
+.account-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+  justify-content: center;
+  gap: 25px;
+  margin: 25px auto;
+}
+
+.card,
+.step,
+.order-card,
+.form-box,
+.product-card {
+  background-color: white;
+  border: 1px solid #C8D8B8;
+  padding: 16px;
+}
+
+.card,
+.product-card {
+  text-align: center;
+}
+
+.card .icon {
+  font-size: 40px;
+}
+
+.categories-section,
+.personal-section,
+.catalog-menu,
+.info-strip {
+  background-color: #C8D8B8;
+}
+
+.cta {
+  background-color: #0B3D2E;
+  color: white;
+  text-align: center;
+}
+
+.cta h2 {
+  color: white;
+}
+
+.center-actions,
+.actions,
+.order-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+/* עמודים מרכזיים */
+.page-title {
+  text-align: center;
+  border-bottom: 1px solid #C8D8B8;
+}
+
+.search-box {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  background-color: white;
+  border: 1px solid #C8D8B8;
+  padding: 5px;
+}
+
+.search-box input {
+  border: 0;
+  outline: 0;
+}
+
+.catalog-menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.category {
+  position: relative;
+}
+
+.category > a {
+  color: #0B3D2E;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  min-width: 150px;
+  background-color: white;
+  border: 1px solid #C8D8B8;
+  z-index: 5;
+}
+
+.dropdown a {
+  display: block;
+  padding: 9px;
+  text-decoration: none;
+}
+
+.category:hover .dropdown {
+  display: block;
+}
+
+.featured-wrapper {
+  position: relative;
+}
+
+.featured {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 12px;
+}
+
+.featured .product-card {
+  min-width: 210px;
+}
+
+.image-box {
+  height: 170px;
+  background-color: #F6F1E9;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.price {
+  color: #256D4F;
+  font-weight: bold;
+}
+
+.big-price {
+  font-size: 26px;
+}
+
+.arrow {
+  position: absolute;
+  top: 45%;
+  border-radius: 50%;
+  padding: 8px 12px;
+}
+
+.arrow.right {
+  right: 5px;
+}
+
+.arrow.left {
+  left: 5px;
+}
+
+/* טפסים */
+.form-box {
+  max-width: 850px;
+  margin: 20px auto;
+}
+
+.narrow-box {
+  max-width: 600px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-row {
+  margin-bottom: 14px;
+  text-align: right;
+}
+
+.form-row.full {
+  grid-column: 1 / 3;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9DB79C;
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+  min-height: 90px;
+}
+
+.invalid {
+  border-color: #B45C42;
+  background-color: #FFF4F1;
+}
+
+.error {
+  display: block;
+  min-height: 16px;
+  color: #B45C42;
+  font-size: 13px;
+}
+
+.success-message {
+  display: none;
+  background-color: #DDE7D2;
+  color: #0B3D2E;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.payment-box,
+.demo-card {
+  background-color: #F6F1E9;
+  border: 1px solid #C8D8B8;
+  padding: 12px;
+}
+
+.auth-page {
+  min-height: 100vh;
+  background-color: #DDE7D2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.auth-box {
+  width: 390px;
+  background-color: #F6F1E9;
+  border: 1px solid #C8D8B8;
+  padding: 25px;
+  text-align: center;
+}
+
+.auth-box img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.auth-box a,
+.back,
+.back-home {
+  display: block;
+  margin-top: 12px;
+  color: #0B3D2E;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* עמודי מוצר עגלה והזמנות */
+.simple-page {
+  padding: 35px 20px;
+}
+
+.product-container {
+  max-width: 930px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  background-color: white;
+  border: 1px solid #C8D8B8;
+  padding: 22px;
+}
+
+.product-image,
+.product-details {
+  flex: 1;
+}
+
+.product-image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  background-color: #F6F1E9;
+}
+
+.desc {
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #C8D8B8;
+  padding: 15px 0;
+}
+
+.cart-item img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.qty-controls button {
+  padding: 5px 10px;
+}
+
+.total,
+.empty,
+.guest-message,
+.center-box,
+.contact-info {
+  text-align: center;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.order-items {
+  padding-right: 20px;
+}
+
+.demo-orders {
+  max-width: 760px;
+  margin: 20px auto;
+}
+
+/* פוטר */
+.info-strip {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  padding: 18px;
+  text-align: center;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+
+footer {
+  background-color: #0B3D2E;
+  color: white;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+footer h3 {
+  color: white;
+}
+
+footer p,
+footer a {
+  color: #DDE7D2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* התאמות למכשירים שונים */
+
+/* התאמה לדסקטופ : 1366x768 */
+@media only screen and (max-width: 1366px) {
+  .page {
+    max-width: 1120px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+}
+
+/* התאמה לטאבלט : 768x1024 */
+@media only screen and (max-width: 900px) {
+  .page {
+    max-width: 760px;
+  }
+
+  nav {
+    gap: 25px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .product-container {
+    flex-direction: column;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row.full {
+    grid-column: auto;
+  }
+
+  footer {
+    text-align: center;
+  }
+}
+
+/* התאמה למובייל : 360x640 */
+@media only screen and (max-width: 480px) {
+  .page {
+    width: 100%;
+    margin: 0;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav,
+  .catalog-menu {
+    gap: 14px;
+    font-size: 15px;
+  }
+
+  .home-hero {
+    min-height: 400px;
+  }
+
+  .hero-content {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  section {
+    padding: 24px 14px;
+  }
+
+  .cards,
+  .steps,
+  .product-grid,
+  .account-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .qty-controls {
+    justify-content: center;
+  }
+
+  .cart-preview {
+    left: -90px;
+    width: 240px;
+  }
+
+  .floating-leaf {
+    font-size: 28px;
+  }
+
+  .leaf1 {
+    top: 55px;
+    right: 18px;
+  }
+
+  .leaf2 {
+    bottom: 55px;
+    left: 18px;
+  }
+
+  .leaf3 {
+    display: none;
+  }
+}

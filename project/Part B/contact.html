@@ -1,149 +1,80 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>צור קשר | FLORA Collective</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #dce8d2;
-}
-
-/* HEADER */
-header {
-  background: linear-gradient(135deg,#0d3b20,#1f5c35);
-  color: white;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-}
-
-/* HERO */
-.hero {
-  height: 250px;
-  background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-    url("./picture/picture aroids.jpg");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero h1 {
-  color: white;
-  font-size: 40px;
-}
-
-/* FORM */
-.contact-box {
-  max-width: 600px;
-  margin: -60px auto 40px;
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeUp 1s ease;
-}
-
-.contact-box h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #174425;
-}
-
-.contact-box input,
-.contact-box textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.contact-box textarea {
-  resize: none;
-  height: 120px;
-}
-
-.contact-box button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #174425;
-  color: white;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.contact-box button:hover {
-  background: #1f5c35;
-}
-
-/* INFO */
-.info {
-  text-align: center;
-  margin-top: 20px;
-  color: #355b3f;
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>צור קשר | FLORA Collective</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
+<div class="page">
 <header>
-  <div>FLORA Collective</div>
+  <div class="top-bar">
+    <a class="logo" href="home-page.html">
+      <img src="picture/logo.jpg" alt="FLORA Collective">
+      <span>FLORA Collective</span>
+    </a>
+
+    <div class="header-icons">
+      <div class="cart-icon-box">
+        <a href="cart.html" class="cart-link" title="עגלת קניות">🛒<span id="cartCount">0</span></a>
+        <div class="cart-preview">
+          <h4>עגלת קניות</h4>
+          <div id="cartPreviewItems"></div>
+          <a href="cart.html" class="cart-preview-btn">מעבר לעגלה</a>
+        </div>
+      </div>
+      <a href="account.html" id="accountLink" class="account-link">👤 התחברות / הרשמה</a>
+    </div>
+  </div>
 
   <nav>
-    <a href="index.html">בית</a>
+    <a href="home-page.html">בית</a>
     <a href="catlog.html">קטלוג</a>
+    <a href="orders.html">ההזמנות שלי</a>
     <a href="contact.html">צור קשר</a>
   </nav>
 </header>
-
-<div class="hero">
-  <h1>צור קשר</h1>
-</div>
-
-<div class="contact-box">
-  <h2>נשמח לשמוע ממך 🌿</h2>
-
-  <input type="text" placeholder="שם מלא">
-  <input type="email" placeholder="אימייל">
-  <textarea placeholder="הודעה"></textarea>
-
-  <button onclick="sendMessage()">שליחה</button>
-
-  <div class="info">
-    📞 053-2254042<br>
-    📸 flora_collective
+<section class="page-title"><h1>צור קשר</h1></section>
+<section>
+  <div class="form-box narrow-box">
+    <h2>נשמח לשמוע ממך 🌿</h2>
+    <form id="contactForm" novalidate>
+      <div class="form-row"><label for="contactName">שם מלא *</label><input type="text" id="contactName"><span class="error" data-error-for="contactName"></span></div>
+      <div class="form-row"><label for="contactEmail">אימייל *</label><input type="email" id="contactEmail"><span class="error" data-error-for="contactEmail"></span></div>
+      <div class="form-row"><label for="contactPhone">טלפון *</label><input type="tel" id="contactPhone"><span class="error" data-error-for="contactPhone"></span></div>
+      <div class="form-row"><label for="contactMsg">הודעה *</label><textarea id="contactMsg"></textarea><span class="error" data-error-for="contactMsg"></span></div>
+      <button type="submit" class="btn full-btn">שליחה</button>
+      <div class="success-message" id="contactSuccess"></div>
+    </form>
+    <p class="contact-info">📞 053-2254042<br>📸 flora_collective</p>
   </div>
+</section>
+<div class="info-strip">
+  <div>🚚 משלוחים מהירים</div>
+  <div>🛡️ ליווי אישי בגידול</div>
+  <div>🌱 צמחים נדירים בלבד</div>
 </div>
-
-<script>
-function sendMessage() {
-  alert("ההודעה נשלחה בהצלחה 🌱");
-}
-</script>
-
+<footer>
+  <div>
+    <h3>FLORA Collective</h3>
+    <p>צמחי בית נדירים, ארואידים, מונסטרות וציוד גידול איכותי.</p>
+  </div>
+  <div>
+    <h3>ניווט</h3>
+    <p><a href="catlog.html">קטלוג</a></p>
+    <p><a href="cart.html">עגלת קניות</a></p>
+    <p><a href="orders.html">ההזמנות שלי</a></p>
+    <p><a href="contact.html">צור קשר</a></p>
+  </div>
+  <div>
+    <h3>יצירת קשר</h3>
+    <p>טלפון: 053-2254042</p>
+    <p>אינסטגרם: flora_collective</p>
+  </div>
+</footer>
+</div>
+<script src="js/main.js"></script>
+<script src="js/validations.js"></script>
 </body>
 </html>

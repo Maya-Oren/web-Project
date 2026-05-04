@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ההזמנות שלי | FLORA Collective</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="top-bar">
+    <a class="logo" href="home-page.html">
+      <img src="picture/logo.jpg" alt="FLORA Collective">
+      <span>FLORA Collective</span>
+    </a>
+
+    <div class="header-icons">
+      <div class="cart-icon-box">
+        <a href="cart.html" class="cart-link" title="עגלת קניות">🛒<span id="cartCount">0</span></a>
+        <div class="cart-preview">
+          <h4>עגלת קניות</h4>
+          <div id="cartPreviewItems"></div>
+          <a href="cart.html" class="cart-preview-btn">מעבר לעגלה</a>
+        </div>
+      </div>
+      <a href="account.html" id="accountLink" class="account-link">👤 התחברות / הרשמה</a>
+    </div>
+  </div>
+
+  <nav>
+    <a href="home-page.html">בית</a>
+    <a href="catlog.html">קטלוג</a>
+    <a href="orders.html">ההזמנות שלי</a>
+    <a href="contact.html">צור קשר</a>
+  </nav>
+</header>
+<section class="page-title"><h1>ההזמנות שלי</h1></section>
+<section>
+  <div class="orders-top">
+    <h2>ניהול הזמנות</h2>
+  </div>
+  <div class="guest-message guest-only">
+    <h3>החשבון מנותק כרגע</h3>
+    <p>  מוצגת דוגמא היפותטית לאיך ייראה עמוד ההזמנות אחרי התחברות.</p>
+    <div class="center-actions">
+      <a href="login.html" class="btn">התחברות</a>
+      <a href="register.html" class="btn secondary-btn">הרשמה</a>
+    </div>
+    <div class="demo-orders">
+      <div class="order-card demo-card">
+        <h3>הזמנה לדוגמה F1001</h3>
+        <p><strong>תאריך:</strong> 12/05/2026</p>
+        <p><strong>סטטוס:</strong> בטיפול</p>
+        <p><strong>משלוח:</strong> שליח עד הבית</p>
+        <p><strong>סה״כ:</strong> ₪230</p>
+        <ul class="order-items">
+          <li>Monstera Thai Constellation × 1</li>
+          <li>מצע אדמה לארואידים × 1</li>
+        </ul>
+      </div>
+      <div class="order-card demo-card">
+        <h3>הזמנה לדוגמה F1000</h3>
+        <p><strong>תאריך:</strong> 02/05/2026</p>
+        <p><strong>סטטוס:</strong> הושלמה</p>
+        <p><strong>משלוח:</strong> איסוף עצמי</p>
+        <p><strong>סה״כ:</strong> ₪95</p>
+      </div>
+    </div>
+  </div>
+  <div class="user-only hidden">
+    <div class="order-tabs">
+      <button type="button" class="tab-btn active" data-order-tab="active">הזמנות פעילות</button>
+      <button type="button" class="tab-btn" data-order-tab="past">הזמנות קודמות</button>
+    </div>
+    <div id="ordersList"></div>
+  </div>
+</section>
+<div class="info-strip">
+  <div>🚚 משלוחים מהירים</div>
+  <div>🛡️ ליווי אישי בגידול</div>
+  <div>🌱 צמחים נדירים בלבד</div>
+</div>
+<footer>
+  <div>
+    <h3>FLORA Collective</h3>
+    <p>צמחי בית נדירים, ארואידים, מונסטרות וציוד גידול איכותי.</p>
+  </div>
+  <div>
+    <h3>ניווט</h3>
+    <p><a href="catlog.html">קטלוג</a></p>
+    <p><a href="cart.html">עגלת קניות</a></p>
+    <p><a href="orders.html">ההזמנות שלי</a></p>
+    <p><a href="contact.html">צור קשר</a></p>
+  </div>
+  <div>
+    <h3>יצירת קשר</h3>
+    <p>טלפון: 053-2254042</p>
+    <p>אינסטגרם: flora_collective</p>
+  </div>
+</footer>
+</div>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
