@@ -1,4 +1,5 @@
 /* קובץ JS ראשי לאתר */
+
 function getCart() {
   var cart = localStorage.getItem("cart");
   if (cart) {
@@ -68,6 +69,7 @@ function updateHeader() {
     } else {
       var previewHtml = "";
       var limit = cart.length;
+
       if (limit > 3) {
         limit = 3;
       }
@@ -81,12 +83,14 @@ function updateHeader() {
         previewHtml += '<strong>' + cart[j].total + '</strong>';
         previewHtml += '</div></div>';
       }
+
       cartPreviewItems.innerHTML = previewHtml;
     }
   }
 
   if (accountLink) {
     accountLink.href = "account.html";
+
     if (user) {
       accountLink.innerText = "👤 אזור אישי";
     } else {
@@ -106,6 +110,7 @@ function renderHomePersonalArea() {
     for (var i = 0; i < guestEls.length; i++) {
       guestEls[i].classList.add("hidden");
     }
+
     for (var j = 0; j < userEls.length; j++) {
       userEls[j].classList.remove("hidden");
     }
@@ -116,11 +121,13 @@ function renderHomePersonalArea() {
 
     var ordersText = localStorage.getItem("orders");
     var orders = [];
+
     if (ordersText) {
       orders = JSON.parse(ordersText);
     }
 
     var activeOrders = 0;
+
     for (var k = 0; k < orders.length; k++) {
       if (orders[k].status !== "הושלמה") {
         activeOrders++;
@@ -138,6 +145,7 @@ function renderHomePersonalArea() {
     for (var a = 0; a < guestEls.length; a++) {
       guestEls[a].classList.remove("hidden");
     }
+
     for (var b = 0; b < userEls.length; b++) {
       userEls[b].classList.add("hidden");
     }
@@ -156,17 +164,20 @@ function renderAccountPage() {
 
   if (user) {
     accountHello.innerText = "שלום " + user.name + " 🌿";
+
     if (accountDetails) {
       accountDetails.innerText = "אימייל מחובר: " + user.email;
     }
 
     var ordersText = localStorage.getItem("orders");
     var orders = [];
+
     if (ordersText) {
       orders = JSON.parse(ordersText);
     }
 
     var activeOrders = 0;
+
     for (var i = 0; i < orders.length; i++) {
       if (orders[i].status !== "הושלמה") {
         activeOrders++;
@@ -185,6 +196,7 @@ function renderAccountPage() {
 
 function initAccountEvents() {
   var logoutBtn = document.getElementById("logoutBtn");
+
   if (logoutBtn) {
     logoutBtn.addEventListener("click", function () {
       localStorage.removeItem("currentUser");
@@ -205,9 +217,11 @@ function renderCatalog() {
   if (featured || deals) {
     for (var id in products) {
       var product = products[id];
+
       if (featured && product.category === "featured") {
         featured.innerHTML += createProductCard(id, product);
       }
+
       if (deals && product.category === "sale") {
         deals.innerHTML += createProductCard(id, product);
       }
@@ -225,6 +239,7 @@ function renderCatalog() {
       if (type && item.type !== type) {
         showProduct = false;
       }
+
       if (kind && item.kind !== kind) {
         showProduct = false;
       }
@@ -256,52 +271,138 @@ function initCatalogEvents() {
       featured.scrollBy(300, 0);
     });
   }
+
   if (featuredLeft && featured) {
     featuredLeft.addEventListener("click", function () {
       featured.scrollBy(-300, 0);
     });
   }
+
   if (dealsRight && deals) {
     dealsRight.addEventListener("click", function () {
       deals.scrollBy(300, 0);
     });
   }
+
   if (dealsLeft && deals) {
     dealsLeft.addEventListener("click", function () {
       deals.scrollBy(-300, 0);
     });
   }
 
+  function closeSuggestions() {
+    var oldBox = document.getElementById("searchSuggestions");
+
+    if (oldBox) {
+      oldBox.remove();
+    }
+  }
+
+  function goToProduct(id) {
+    window.location.href = "product.html?id=" + encodeURIComponent(id);
+  }
+
   function runSearch() {
-    if (!searchInput) {
+    if (!searchInput || typeof products === "undefined") {
       return;
     }
+
+    closeSuggestions();
+
     var value = searchInput.value.trim().toLowerCase();
-    var cards = document.querySelectorAll(".product-card");
-    for (var i = 0; i < cards.length; i++) {
-      if (cards[i].innerText.toLowerCase().indexOf(value) !== -1) {
-        cards[i].style.display = "block";
-      } else {
-        cards[i].style.display = "none";
+
+    if (value === "") {
+      return;
+    }
+
+    var suggestionsBox = document.createElement("div");
+    suggestionsBox.id = "searchSuggestions";
+    suggestionsBox.className = "search-suggestions";
+
+    var foundCounter = 0;
+
+    for (var id in products) {
+      var product = products[id];
+
+      var name = (product.name || "").toLowerCase();
+      var type = (product.type || "").toLowerCase();
+      var kind = (product.kind || "").toLowerCase();
+
+      if (
+        name.indexOf(value) !== -1 ||
+        type.indexOf(value) !== -1 ||
+        kind.indexOf(value) !== -1
+      ) {
+        foundCounter++;
+
+        var item = document.createElement("div");
+        item.className = "search-suggestion";
+        item.setAttribute("data-id", id);
+
+        item.innerHTML =
+          '<img src="' + product.image + '" alt="' + product.name + '">' +
+          '<div>' +
+          '<strong>' + product.name + '</strong>' +
+          '<span>' + getDisplayPrice(product) + '</span>' +
+          '</div>';
+
+        item.addEventListener("click", function () {
+          goToProduct(this.getAttribute("data-id"));
+        });
+
+        suggestionsBox.appendChild(item);
+
+        if (foundCounter >= 8) {
+          break;
+        }
       }
     }
+
+    if (foundCounter === 0) {
+      suggestionsBox.innerHTML = '<div class="search-suggestion empty">לא נמצאו מוצרים</div>';
+    }
+
+    searchInput.parentElement.appendChild(suggestionsBox);
   }
 
   if (searchInput) {
     searchInput.addEventListener("input", runSearch);
+
+    searchInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        var firstSuggestion = document.querySelector(".search-suggestion:not(.empty)");
+
+        if (firstSuggestion) {
+          firstSuggestion.click();
+        }
+      }
+    });
   }
+
   if (searchBtn) {
-    searchBtn.addEventListener("click", runSearch);
+    searchBtn.addEventListener("click", function () {
+      runSearch();
+
+      var firstSuggestion = document.querySelector(".search-suggestion:not(.empty)");
+
+      if (firstSuggestion) {
+        firstSuggestion.click();
+      }
+    });
   }
+
+  document.addEventListener("click", function (event) {
+    if (searchInput && !searchInput.parentElement.contains(event.target)) {
+      closeSuggestions();
+    }
+  });
 }
 
 function getProductIdFromUrl() {
-  var url = window.location.href;
-  var parts = url.split("id=");
-  if (parts.length > 1) {
-    return parts[1].split("&")[0];
-  }
-  return null;
+  var params = new URLSearchParams(window.location.search);
+  return params.get("id");
 }
 
 function renderProductPage() {
@@ -310,6 +411,7 @@ function renderProductPage() {
   }
 
   var productName = document.getElementById("productName");
+
   if (!productName) {
     return;
   }
@@ -339,9 +441,12 @@ function renderProductPage() {
 
   if (product.options && product.options.length > 0) {
     optionBox.style.display = "block";
+    productOption.innerHTML = "";
+
     for (var i = 0; i < product.options.length; i++) {
       productOption.innerHTML += '<option value="' + i + '">' + product.options[i].size + ' - ' + product.options[i].price + '</option>';
     }
+
     selectedProduct = product.options[0];
 
     productOption.addEventListener("change", function () {
@@ -349,15 +454,20 @@ function renderProductPage() {
       updateProductPrice();
     });
   } else {
-    selectedProduct = { size: "", price: product.price };
+    selectedProduct = {
+      size: "",
+      price: product.price
+    };
   }
 
   function updateProductPrice() {
     var quantity = Number(quantityInput.value);
+
     if (quantity < 1 || isNaN(quantity)) {
       quantity = 1;
       quantityInput.value = 1;
     }
+
     var total = getPriceNumber(selectedProduct.price) * quantity;
     productPrice.innerText = "₪" + total;
   }
@@ -366,6 +476,7 @@ function renderProductPage() {
 
   addToCartBtn.addEventListener("click", function () {
     var quantity = Number(quantityInput.value);
+
     if (quantity < 1 || isNaN(quantity)) {
       quantity = 1;
     }
@@ -392,6 +503,7 @@ function renderProductPage() {
         quantity: quantity,
         total: "₪" + total
       };
+
       cart.push(cartItem);
     }
 
@@ -429,6 +541,7 @@ function renderCart() {
   for (var i = 0; i < cart.length; i++) {
     var unitPrice = getPriceNumber(cart[i].unitPrice);
     var itemTotal = unitPrice * Number(cart[i].quantity);
+
     cart[i].total = "₪" + itemTotal;
     total += itemTotal;
 
@@ -469,9 +582,11 @@ function initCartEvents() {
       if (event.target.classList.contains("qty-plus")) {
         changeQty(index, 1);
       }
+
       if (event.target.classList.contains("qty-minus")) {
         changeQty(index, -1);
       }
+
       if (event.target.classList.contains("remove-item")) {
         removeItem(index);
       }
@@ -507,16 +622,25 @@ function updateCartTotalWithShipping() {
   }
 
   var shippingCost = 0;
+
   if (shipping && shipping.value === "שליח עד הבית") {
     shippingCost = 30;
   }
 
   var finalTotal = total + shippingCost;
-  totalBox.innerHTML = "סה״כ מוצרים: ₪" + total + "<br>משלוח: ₪" + shippingCost + "<br>סה״כ לתשלום: ₪" + finalTotal;
+
+  totalBox.innerHTML =
+    "סה״כ מוצרים: ₪" +
+    total +
+    "<br>משלוח: ₪" +
+    shippingCost +
+    "<br>סה״כ לתשלום: ₪" +
+    finalTotal;
 }
 
 function changeQty(index, change) {
   var cart = getCart();
+
   cart[index].quantity = Number(cart[index].quantity) + change;
 
   if (cart[index].quantity <= 0) {
@@ -530,7 +654,9 @@ function changeQty(index, change) {
 
 function removeItem(index) {
   var cart = getCart();
+
   cart.splice(index, 1);
+
   saveCart(cart);
   renderCart();
   updateCartTotalWithShipping();
@@ -538,6 +664,7 @@ function removeItem(index) {
 
 function renderOrders(tab) {
   var list = document.getElementById("ordersList");
+
   if (!list) {
     return;
   }
@@ -548,6 +675,7 @@ function renderOrders(tab) {
 
   var ordersText = localStorage.getItem("orders");
   var orders = [];
+
   if (ordersText) {
     orders = JSON.parse(ordersText);
   }
@@ -560,6 +688,7 @@ function renderOrders(tab) {
 
     if ((tab === "past" && isPast) || (tab === "active" && !isPast)) {
       counter++;
+
       html += '<div class="order-card">';
       html += '<h3>הזמנה מספר ' + orders[i].id + '</h3>';
       html += '<p><strong>תאריך:</strong> ' + orders[i].date + '</p>';
@@ -569,10 +698,17 @@ function renderOrders(tab) {
       html += '<ul class="order-items">';
 
       for (var j = 0; j < orders[i].cart.length; j++) {
-        html += '<li>' + orders[i].cart[j].name + ' ' + (orders[i].cart[j].option || "") + ' × ' + orders[i].cart[j].quantity + '</li>';
+        html +=
+          '<li>' +
+          orders[i].cart[j].name +
+          " " +
+          (orders[i].cart[j].option || "") +
+          " × " +
+          orders[i].cart[j].quantity +
+          "</li>";
       }
 
-      html += '</ul></div>';
+      html += "</ul></div>";
     }
   }
 
@@ -591,6 +727,7 @@ function initOrdersEvents() {
       for (var j = 0; j < tabButtons.length; j++) {
         tabButtons[j].classList.remove("active");
       }
+
       this.classList.add("active");
       renderOrders(this.getAttribute("data-order-tab"));
     });
@@ -599,11 +736,13 @@ function initOrdersEvents() {
 
 function renderSuccess() {
   var box = document.getElementById("successOrderDetails");
+
   if (!box) {
     return;
   }
 
   var orderText = localStorage.getItem("lastOrder");
+
   if (!orderText) {
     box.innerHTML = "<p>לא נמצאה הזמנה אחרונה.</p>";
     return;
@@ -611,9 +750,11 @@ function renderSuccess() {
 
   var order = JSON.parse(orderText);
   var html = "";
+
   html += "<p><strong>מספר הזמנה:</strong> " + order.id + "</p>";
   html += "<p><strong>שם:</strong> " + order.customer.fullName + "</p>";
   html += "<p><strong>סה״כ לתשלום:</strong> ₪" + order.totals.final + "</p>";
+
   box.innerHTML = html;
 }
 
