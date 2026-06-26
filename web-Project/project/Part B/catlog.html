@@ -14,20 +14,13 @@
       <img src="picture/logo.jpg" alt="FLORA Collective">
       <span>FLORA Collective</span>
     </a>
-
     <div class="header-icons">
       <div class="cart-icon-box">
-        <a href="cart.html" class="cart-link" title="עגלת קניות">🛒<span id="cartCount">0</span></a>
-        <div class="cart-preview">
-          <h4>עגלת קניות</h4>
-          <div id="cartPreviewItems"></div>
-          <a href="cart.html" class="cart-preview-btn">מעבר לעגלה</a>
-        </div>
+        <button type="button" class="cart-link cart-open-btn" id="openMiniCart" title="עגלת קניות">🛒<span id="cartCount">0</span></button>
       </div>
       <a href="account.html" id="accountLink" class="account-link">👤 התחברות / הרשמה</a>
     </div>
   </div>
-
   <nav>
     <a href="home-page.html">בית</a>
     <a href="catlog.html">קטלוג</a>
@@ -35,50 +28,37 @@
     <a href="contact.html">צור קשר</a>
   </nav>
 </header>
+
 <section class="page-title">
   <h1>קטלוג</h1>
+  <p>בחרי קטגוריה ראשית. בקטגוריות עם תתי־קטגוריות, לחיצה תפתח אפשרויות נוספות.</p>
   <div class="search-box">
-    <input type="text" id="catalogSearch" placeholder="חיפוש בקטלוג...">
-    <button type="button" id="catalogSearchBtn">🔍</button>
+    <input type="text" id="catalogSearch" placeholder="חיפוש לפי שם, סוג או קטגוריה...">
+    <button type="button" id="catalogSearchBtn">חיפוש</button>
   </div>
 </section>
-<div class="catalog-menu">
-  <div class="category">
-    <a href="nutrients.html">דשנים</a>
-    <div class="dropdown">
-      <a href="Advanced.html">דשן Advanced Nutrients</a>
-      <a href="GHE.html">דשן GHE</a>
-    </div>
-  </div>
-
-  <div class="category">
-    <a href="plant.html">צמחים</a>
-    <div class="dropdown">
-      <a href="aloxies.html">אלוקסיות</a>
-      <a href="monsters.html">מונסטרות</a>
-    </div>
-  </div>
-
-  <div class="category"><a href="Growing-Accessories.html">ציוד נלווה</a></div>
-  <div class="category"><a href="led.html">תאורת גידול</a></div>
-  <div class="category"><a href="Potting-Mix.html">מצעי אדמה</a></div>
-</div>
-<section>
+<div class="catalog-menu catalog-menu-grouped" id="catalogMenu"></div>
+<section id="catalogSearchSection" class="hidden">
+  <h2>תוצאות חיפוש</h2>
+  <div class="product-grid" id="catalogResults"></div>
+</section>
+<section id="featuredSection">
   <h2>מומלצי פלורה</h2>
   <div class="featured-wrapper">
-    <button class="arrow right" id="featuredRight">❮</button>
+    <button class="arrow right" id="featuredRight" type="button">❮</button>
     <div class="featured" id="featured"></div>
-    <button class="arrow left" id="featuredLeft">❯</button>
+    <button class="arrow left" id="featuredLeft" type="button">❯</button>
   </div>
 </section>
-<section>
+<section id="dealsSection">
   <h2>מבצעים</h2>
   <div class="featured-wrapper">
-    <button class="arrow right" id="dealsRight">❮</button>
+    <button class="arrow right" id="dealsRight" type="button">❮</button>
     <div class="featured" id="deals"></div>
-    <button class="arrow left" id="dealsLeft">❯</button>
+    <button class="arrow left" id="dealsLeft" type="button">❯</button>
   </div>
 </section>
+
 <div class="info-strip">
   <div>🚚 משלוחים מהירים</div>
   <div>🛡️ ליווי אישי בגידול</div>
@@ -102,6 +82,21 @@
     <p>אינסטגרם: flora_collective</p>
   </div>
 </footer>
+<div class="mini-cart" id="miniCart" aria-hidden="true">
+  <div class="mini-cart-panel">
+    <div class="mini-cart-head">
+      <h3>עגלת הקניות</h3>
+      <button type="button" id="closeMiniCart" class="icon-btn" aria-label="סגירת עגלה">×</button>
+    </div>
+    <div id="miniCartItems"></div>
+    <div class="mini-cart-total" id="miniCartTotal"></div>
+    <div class="mini-cart-actions">
+      <a href="cart.html" class="btn">מעבר לעגלה</a>
+      <button type="button" class="secondary-btn" id="continueShoppingBtn">המשך קנייה</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
 </div>
 <script src="js/products.js"></script>
 <script src="js/main.js"></script>

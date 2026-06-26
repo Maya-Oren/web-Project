@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>צור קשר | FLORA Collective</title>
+  <title>קטגוריה | FLORA Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,21 +28,22 @@
     <a href="contact.html">צור קשר</a>
   </nav>
 </header>
-<section class="page-title"><h1>צור קשר</h1></section>
-<section>
-  <div class="form-box narrow-box">
-    <h2>נשמח לשמוע ממך 🌿</h2>
-    <form id="contactForm" novalidate>
-      <div class="form-row"><label for="contactName">שם מלא *</label><input type="text" id="contactName"><span class="error" data-error-for="contactName"></span></div>
-      <div class="form-row"><label for="contactEmail">אימייל *</label><input type="email" id="contactEmail"><span class="error" data-error-for="contactEmail"></span></div>
-      <div class="form-row"><label for="contactPhone">טלפון *</label><input type="tel" id="contactPhone"><span class="error" data-error-for="contactPhone"></span></div>
-      <div class="form-row"><label for="contactMsg">הודעה *</label><textarea id="contactMsg"></textarea><span class="error" data-error-for="contactMsg"></span></div>
-      <button type="submit" class="btn full-btn">שליחה</button>
-      <div class="success-message" id="contactSuccess"></div>
-    </form>
-    <p class="contact-info">📞 053-2254042<br>📸 flora_collective</p>
+
+<section class="page-title">
+  <h1 id="categoryTitle">קטגוריה</h1>
+  <p>בחרי תת־קטגוריה או הוסיפי מוצרים לסל ישירות מהכרטיס.</p>
+  <div class="search-box">
+    <input type="text" id="catalogSearch" placeholder="חיפוש בתוך הקטגוריה...">
+    <button type="button" id="catalogSearchBtn">חיפוש</button>
   </div>
 </section>
+<div class="catalog-menu catalog-menu-grouped" id="catalogMenu"></div>
+<section>
+  <div id="subcategoryOptions" class="subcategory-options"></div>
+  <h2 id="categorySubtitle">מוצרים</h2>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
 <div class="info-strip">
   <div>🚚 משלוחים מהירים</div>
   <div>🛡️ ליווי אישי בגידול</div>
@@ -82,7 +83,7 @@
 </div>
 <div class="toast" id="toast"></div>
 </div>
+<script src="js/products.js"></script>
 <script src="js/main.js"></script>
-<script src="js/validations.js"></script>
 </body>
 </html>
