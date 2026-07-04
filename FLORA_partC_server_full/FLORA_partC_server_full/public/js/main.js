@@ -66,6 +66,37 @@ function formatPrice(number) {
   return "₪" + Number(number || 0).toLocaleString("he-IL");
 }
 
+function getDiscountedPriceNumber(priceText) {
+  return getPriceNumber(priceText) * 0.9;
+}
+
+function getDiscountedPrice(priceText) {
+  return formatPrice(getDiscountedPriceNumber(priceText));
+}
+
+function getPriceHTML(priceText, isSale, prefix) {
+  if (!priceText) return "";
+
+  prefix = prefix || "";
+
+  if (isSale) {
+    return '' +
+      '<span class="price-prefix">' + escapeHtml(prefix) + '</span>' +
+      '<del class="old-price">' + escapeHtml(priceText) + '</del>' +
+      '<span class="new-price">' + escapeHtml(getDiscountedPrice(priceText)) + '</span>';
+  }
+
+  return escapeHtml(prefix + priceText);
+}
+
+function getDisplayPriceHTML(product) {
+  if (product.options && product.options.length > 0) {
+    return getPriceHTML(product.options[0].price, product.category === "sale", "החל מ־");
+  }
+
+  return getPriceHTML(product.price, product.category === "sale", "");
+}
+
 function imagePath(src) {
   return src || IMAGE_FALLBACK;
 }
@@ -194,7 +225,7 @@ function createProductCard(id, product) {
         '<div class="image-box"><img src="' + escapeHtml(imagePath(product.image)) + '" alt="' + escapeHtml(product.name) + '" onerror="this.src=\'' + IMAGE_FALLBACK + '\'"></div>' +
       '</a>' +
       '<h3>' + escapeHtml(product.name) + '</h3>' +
-      '<p class="price" data-card-price="true">' + escapeHtml(getDisplayPrice(product)) + '</p>' +
+      '<p class="price" data-card-price="true">' + getDisplayPriceHTML(product) + '</p>' +
       quickOptions +
       '<div class="product-card-actions">' +
         '<button type="button" class="btn add-card-btn" data-add-id="' + escapeHtml(id) + '">הוספה לסל</button>' +
@@ -212,6 +243,9 @@ function addProductToCart(id, quantity, optionIndex) {
     option = { label: option.size || "", price: option.price };
   } else {
     option = getDefaultOption(product);
+  }
+  if (product.category === "sale") {
+    option.price = getDiscountedPrice(option.price);
   }
   quantity = Number(quantity || 1);
   if (!quantity || quantity < 1) quantity = 1;
@@ -522,7 +556,11 @@ function initCatalogEvents() {
       var priceEl = cardForPrice ? cardForPrice.querySelector("[data-card-price]") : null;
       var productForPrice = productIdForPrice && products ? products[productIdForPrice] : null;
       if (priceEl && productForPrice && productForPrice.options && productForPrice.options[Number(optionSelect.value)]) {
-        priceEl.innerText = productForPrice.options[Number(optionSelect.value)].price;
+        priceEl.innerHTML = getPriceHTML(
+          productForPrice.options[Number(optionSelect.value)].price,
+          productForPrice.category === "sale",
+          ""
+        );
       }
       return;
     }
@@ -583,7 +621,8 @@ function renderProductPage() {
     var option = product.options && product.options.length ? product.options[selectedIndex] : { price: product.price };
     var quantity = Number(quantityInput.value || 1);
     if (quantity < 1 || isNaN(quantity)) { quantity = 1; quantityInput.value = 1; }
-    productPrice.innerText = formatPrice(getPriceNumber(option.price) * quantity);
+    var originalPrice = formatPrice(getPriceNumber(option.price) * quantity);
+    productPrice.innerHTML = getPriceHTML(originalPrice, product.category === "sale", "");
   }
   quantityInput.addEventListener("input", updateProductPrice);
   addToCartBtn.addEventListener("click", function () {
