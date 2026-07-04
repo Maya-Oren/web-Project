@@ -232,3 +232,34 @@ footer a { color: white; text-decoration: none; }
   margin-bottom: 4px;
   background: #FAFCF7;
 }
+
+/* Sale price display */
+.price-prefix {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.old-price {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.new-price {
+  display: inline-block;
+  color: var(--danger);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.big-price .old-price {
+  font-size: 18px;
+}
+
+.big-price .new-price {
+  font-size: 28px;
+}
