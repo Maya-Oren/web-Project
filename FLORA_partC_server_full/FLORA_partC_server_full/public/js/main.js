@@ -1,4 +1,3 @@
-/* main.js - גרסה פשוטה ומתוקנת לפרויקט קורס WEB */
 
 var IMAGE_FALLBACK = "picture/logo.jpg";
 var CATEGORY_TITLES = {
