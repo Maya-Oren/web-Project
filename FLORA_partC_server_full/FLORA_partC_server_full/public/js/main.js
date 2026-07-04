@@ -1,4 +1,4 @@
-
+/* Main JS
 var IMAGE_FALLBACK = "picture/logo.jpg";
 var CATEGORY_TITLES = {
   "plants": "צמחים מיוחדים",
