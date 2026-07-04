@@ -1,4 +1,4 @@
-// עדכני כאן את סיסמת MySQL שלך ואת שם בסיס הנתונים אם צריך
+// Our conf website
 module.exports = {
   HOST: "localhost",
   USER: "root",
